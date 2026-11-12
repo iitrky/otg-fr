@@ -1,0 +1,12 @@
+body{font-family:"Times New Roman",Times,serif;font-size:10pt;line-height:1.5;max-width:none;margin:0;color:#000;text-align:justify}
+h1.title{font-size:17pt;text-align:center;line-height:1.25;margin:0 0 10pt}
+h1{font-size:13.5pt;margin:16pt 0 6pt} h2{font-size:12pt;margin:12pt 0 4pt} 
+.Author,[data-custom-style=Author]{text-align:center;font-size:12pt}
+[data-custom-style=Affiliation]{text-align:center;font-size:10pt;font-style:italic}
+table{border-collapse:collapse;width:100%;font-size:8.8pt;line-height:1.25;margin:4pt 0 10pt;text-align:left;page-break-inside:avoid}
+th,td{border:0.6pt solid #888;padding:2.5pt 4pt;vertical-align:top} th{background:#f2f2f2}
+caption{caption-side:top;text-align:left;font-size:9.5pt;margin-bottom:3pt}
+figure{margin:8pt 0;page-break-inside:avoid} figure img{width:100%} figcaption{font-size:9.5pt;text-align:justify}
+math[display=block]{margin:6pt 0}
+.header-section-number{margin-right:8pt}
+ol li{margin-bottom:2pt}

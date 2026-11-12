@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "OTG-FR: Grid Frequency as the Aggregation Channel for Federated Restoration of Islanded Microgrids"
+authors:
+  - family-names: "G"
+    given-names: "Arul Dalton"
+    orcid: "https://orcid.org/0000-0002-5981-7176"
+    affiliation: "Department of Computer Science and Engineering, Saveetha Engineering College, Chennai, India"
+    email: "aruldalton@saveetha.ac.in"
+  - family-names: "S"
+    given-names: "Marisargunam"
+    orcid: "https://orcid.org/0009-0008-5157-2048"
+    affiliation: "Department of Electrical and Electronics Engineering, Saveetha Engineering College, Chennai, India"
+    email: "marisargunams@saveetha.ac.in"
+version: 1.0.0
+date-released: 2026-11-11
+license: MIT
+repository-code: "https://github.com/iitrky/otg-fr"
+keywords: [grid-forming inverter, service restoration, federated learning, droop control, over-the-air computation, distribution system resilience]
