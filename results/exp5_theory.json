@@ -1,0 +1,353 @@
+{
+  "code_drift_order": {
+    "sequency": 1,
+    "drift": 5
+  },
+  "prop3_L": {
+    "16": {
+      "sim_rmse_mean": 0.15179937586113215,
+      "sim_rmse_wavg": 0.17919156314256607,
+      "pred_rmse_mean": 0.14904103438512653,
+      "pred_rmse_wavg": 0.1676370739446078,
+      "peak_mhz_max": 58.604007308247624,
+      "bound_violations": 0
+    },
+    "32": {
+      "sim_rmse_mean": 0.10502350047901213,
+      "sim_rmse_wavg": 0.11092789610715588,
+      "pred_rmse_mean": 0.10565310941804198,
+      "pred_rmse_wavg": 0.11479990678863661,
+      "peak_mhz_max": 50.92389337788886,
+      "bound_violations": 0
+    },
+    "64": {
+      "sim_rmse_mean": 0.07735356856802585,
+      "sim_rmse_wavg": 0.0853854566390757,
+      "pred_rmse_mean": 0.07448880042958185,
+      "pred_rmse_wavg": 0.0813825751408647,
+      "peak_mhz_max": 63.27851106142067,
+      "bound_violations": 0
+    },
+    "128": {
+      "sim_rmse_mean": 0.05114519745639391,
+      "sim_rmse_wavg": 0.054392134157174137,
+      "pred_rmse_mean": 0.05283492225379382,
+      "pred_rmse_wavg": 0.05797796660702874,
+      "peak_mhz_max": 58.35870843315657,
+      "bound_violations": 0
+    },
+    "256": {
+      "sim_rmse_mean": 0.036433823031368176,
+      "sim_rmse_wavg": 0.041990594779378054,
+      "pred_rmse_mean": 0.03738073850675743,
+      "pred_rmse_wavg": 0.04161494682793399,
+      "peak_mhz_max": 60.57332650879012,
+      "bound_violations": 0
+    }
+  },
+  "prop3_A": {
+    "0.002": {
+      "sim_rmse_mean": 0.6099481025467463,
+      "sim_rmse_wavg": 2.2463504913304773,
+      "pred_rmse_mean": 0.3727670920389472,
+      "pred_rmse_wavg": 0.42180067250026326,
+      "peak_mhz_max": 13.052270564924845,
+      "bound_violations": 0
+    },
+    "0.005": {
+      "sim_rmse_mean": 0.15362423556864846,
+      "sim_rmse_wavg": 0.18287275784244797,
+      "pred_rmse_mean": 0.14946662408572184,
+      "pred_rmse_wavg": 0.1679632719533801,
+      "peak_mhz_max": 30.375467564563525,
+      "bound_violations": 0
+    },
+    "0.01": {
+      "sim_rmse_mean": 0.07670076336211333,
+      "sim_rmse_wavg": 0.08234991855425053,
+      "pred_rmse_mean": 0.07448277473174916,
+      "pred_rmse_wavg": 0.07746829592904002,
+      "peak_mhz_max": 57.26956702452373,
+      "bound_violations": 0
+    },
+    "0.02": {
+      "sim_rmse_mean": 0.03837338603895997,
+      "sim_rmse_wavg": 0.03618486731268598,
+      "pred_rmse_mean": 0.03734033439127601,
+      "pred_rmse_wavg": 0.03822503956993247,
+      "peak_mhz_max": 150.9497445702704,
+      "bound_violations": 0
+    }
+  },
+  "prop3_noise": {
+    "0.0025": {
+      "sim_rmse_mean": 0.03858966460607101,
+      "sim_rmse_wavg": 0.04417907704952451,
+      "pred_rmse_mean": 0.038849260680338095,
+      "pred_rmse_wavg": 0.042269533836841566,
+      "peak_mhz_max": 65.55494792402125,
+      "bound_violations": 0
+    },
+    "0.005": {
+      "sim_rmse_mean": 0.07419512341440164,
+      "sim_rmse_wavg": 0.08675927489334878,
+      "pred_rmse_mean": 0.07479385950784358,
+      "pred_rmse_wavg": 0.08050003461744086,
+      "peak_mhz_max": 68.95140725386608,
+      "bound_violations": 0
+    },
+    "0.01": {
+      "sim_rmse_mean": 0.1476479518814244,
+      "sim_rmse_wavg": 0.172867610900186,
+      "pred_rmse_mean": 0.14811169291120868,
+      "pred_rmse_wavg": 0.16502044475503228,
+      "peak_mhz_max": 67.02220295179151,
+      "bound_violations": 0
+    },
+    "0.02": {
+      "sim_rmse_mean": 5.987769916710218,
+      "sim_rmse_wavg": 1.7530631916606765,
+      "pred_rmse_mean": 0.29489978435747716,
+      "pred_rmse_wavg": 0.32796465776166595,
+      "peak_mhz_max": 53.288716643794935,
+      "bound_violations": 0
+    }
+  },
+  "prop3_N": {
+    "4": {
+      "sim_rmse_mean": 0.0908276601734219,
+      "sim_rmse_wavg": 0.08999024575891001,
+      "pred_rmse_mean": 0.08826258541302004,
+      "pred_rmse_wavg": 0.09551319888280765,
+      "peak_mhz_max": 36.25726362900945,
+      "bound_violations": 0
+    },
+    "8": {
+      "sim_rmse_mean": 0.09660492895387887,
+      "sim_rmse_wavg": 0.08696430148790799,
+      "pred_rmse_mean": 0.09205320232627884,
+      "pred_rmse_wavg": 0.09220547043060452,
+      "peak_mhz_max": 30.218531427272676,
+      "bound_violations": 0
+    },
+    "16": {
+      "sim_rmse_mean": 0.08708999178874226,
+      "sim_rmse_wavg": 0.08906437176485271,
+      "pred_rmse_mean": 0.09130466396569424,
+      "pred_rmse_wavg": 0.0887229828004865,
+      "peak_mhz_max": 23.52786474074327,
+      "bound_violations": 0
+    },
+    "32": {
+      "sim_rmse_mean": 0.09112352489366868,
+      "sim_rmse_wavg": 0.08714301562748061,
+      "pred_rmse_mean": 0.09031123159407559,
+      "pred_rmse_wavg": 0.08755931316515966,
+      "peak_mhz_max": 19.952385127135283,
+      "bound_violations": 0
+    },
+    "64": {
+      "sim_rmse_mean": 0.08798853383604711,
+      "sim_rmse_wavg": 0.08935129523375339,
+      "pred_rmse_mean": 0.08950248725617332,
+      "pred_rmse_wavg": 0.08581061131713336,
+      "peak_mhz_max": 16.43082332090477,
+      "bound_violations": 0
+    }
+  },
+  "prop3_fit": {
+    "n_points": 36,
+    "median_ratio_sim_over_pred": 1.0230865500873514,
+    "max_abs_rel_dev": 19.30442283895281,
+    "r2_log": 0.6679713908526177
+  },
+  "prop2_lin": {
+    "sequency": {
+      "0.0": {
+        "sim_rmse_mean": 0.08809024557017289,
+        "sim_rmse_wavg": 0.10031498504301944,
+        "pred_rmse_mean": 0.08786328282103918,
+        "pred_rmse_wavg": 0.09996554240464614,
+        "peak_mhz_max": 32.665739203614955,
+        "bound_violations": 0
+      },
+      "0.05": {
+        "sim_rmse_mean": 0.0869016642257948,
+        "sim_rmse_wavg": 0.10122532649922043,
+        "pred_rmse_mean": 0.08810172435170631,
+        "pred_rmse_wavg": 0.09592934588004631,
+        "peak_mhz_max": 33.716501312804354,
+        "bound_violations": 0
+      },
+      "0.1": {
+        "sim_rmse_mean": 0.088798739056625,
+        "sim_rmse_wavg": 0.09483241506217711,
+        "pred_rmse_mean": 0.08829619256297791,
+        "pred_rmse_wavg": 0.09809375160324585,
+        "peak_mhz_max": 34.877707582043676,
+        "bound_violations": 0
+      },
+      "0.25": {
+        "sim_rmse_mean": 0.10973588155103309,
+        "sim_rmse_wavg": 0.10319989838559136,
+        "pred_rmse_mean": 0.08813919345003576,
+        "pred_rmse_wavg": 0.0965600589199545,
+        "peak_mhz_max": 38.537778081075245,
+        "bound_violations": 0
+      },
+      "0.5": {
+        "sim_rmse_mean": 0.17010353576625567,
+        "sim_rmse_wavg": 0.13224752543369891,
+        "pred_rmse_mean": 0.08822941723428725,
+        "pred_rmse_wavg": 0.09580874616571688,
+        "peak_mhz_max": 43.07497232311344,
+        "bound_violations": 0
+      },
+      "1.0": {
+        "sim_rmse_mean": 0.2697651368530145,
+        "sim_rmse_wavg": 0.1504039127282556,
+        "pred_rmse_mean": 0.08795756270907001,
+        "pred_rmse_wavg": 0.09310571446632944,
+        "peak_mhz_max": 37.32926906930687,
+        "bound_violations": 0
+      }
+    },
+    "drift": {
+      "0.0": {
+        "sim_rmse_mean": 0.08686141336237205,
+        "sim_rmse_wavg": 0.10556757632757799,
+        "pred_rmse_mean": 0.08794731102394987,
+        "pred_rmse_wavg": 0.09484111010075526,
+        "peak_mhz_max": 38.68602467010513,
+        "bound_violations": 0
+      },
+      "0.05": {
+        "sim_rmse_mean": 0.09128851581934656,
+        "sim_rmse_wavg": 0.09396717266521498,
+        "pred_rmse_mean": 0.08823957873427314,
+        "pred_rmse_wavg": 0.09433367659120485,
+        "peak_mhz_max": 35.32549298786119,
+        "bound_violations": 0
+      },
+      "0.1": {
+        "sim_rmse_mean": 0.08398227283254801,
+        "sim_rmse_wavg": 0.10694186787663093,
+        "pred_rmse_mean": 0.08776502442637193,
+        "pred_rmse_wavg": 0.09820467482830957,
+        "peak_mhz_max": 35.89918987376254,
+        "bound_violations": 0
+      },
+      "0.25": {
+        "sim_rmse_mean": 0.09018520521441929,
+        "sim_rmse_wavg": 0.093826314118997,
+        "pred_rmse_mean": 0.08786821918906218,
+        "pred_rmse_wavg": 0.0963863571089395,
+        "peak_mhz_max": 33.45264833284116,
+        "bound_violations": 0
+      },
+      "0.5": {
+        "sim_rmse_mean": 0.09110378750859337,
+        "sim_rmse_wavg": 0.09232014569005256,
+        "pred_rmse_mean": 0.08786294722653094,
+        "pred_rmse_wavg": 0.0987040962382276,
+        "peak_mhz_max": 30.48858990684179,
+        "bound_violations": 0
+      },
+      "1.0": {
+        "sim_rmse_mean": 0.0857340791686874,
+        "sim_rmse_wavg": 0.09330546705992902,
+        "pred_rmse_mean": 0.08756622705190895,
+        "pred_rmse_wavg": 0.09550939001717886,
+        "peak_mhz_max": 34.919607142428376,
+        "bound_violations": 0
+      }
+    }
+  },
+  "prop2_ac": {
+    "noisefree_sequency_0.0": {
+      "rmse_mean": 0.004083719361563922,
+      "rmse_wavg": 0.004998303660272469,
+      "max_mean": 0.008786611818639455
+    },
+    "noisefree_drift_0.0": {
+      "rmse_mean": 0.0035946878720571895,
+      "rmse_wavg": 0.003199537253759513,
+      "max_mean": 0.006377353275392933
+    },
+    "noisefree_sequency_0.25": {
+      "rmse_mean": 0.03677298357983267,
+      "rmse_wavg": 0.006666446913506383,
+      "max_mean": 0.06196934844671065
+    },
+    "noisefree_drift_0.25": {
+      "rmse_mean": 0.004545770643017634,
+      "rmse_wavg": 0.0032243501472786302,
+      "max_mean": 0.010023999344933032
+    },
+    "noisefree_sequency_0.5": {
+      "rmse_mean": 0.07728372048127312,
+      "rmse_wavg": 0.010071774492349746,
+      "max_mean": 0.13629475109872696
+    },
+    "noisefree_drift_0.5": {
+      "rmse_mean": 0.004611679939901333,
+      "rmse_wavg": 0.0032659389556989535,
+      "max_mean": 0.007837694500167913
+    },
+    "noisefree_sequency_1.0": {
+      "rmse_mean": 0.1317425792489569,
+      "rmse_wavg": 0.024027579418681413,
+      "max_mean": 0.19632265273227217
+    },
+    "noisefree_drift_1.0": {
+      "rmse_mean": 0.005046305632589729,
+      "rmse_wavg": 0.004310778809990743,
+      "max_mean": 0.011947126580631913
+    },
+    "noisy_sequency_0.0": {
+      "rmse_mean": 0.08717239247989583,
+      "rmse_wavg": 0.09594652444030802,
+      "max_mean": 0.2807001317969998
+    },
+    "noisy_drift_0.0": {
+      "rmse_mean": 0.0981679499641266,
+      "rmse_wavg": 0.09290097646978235,
+      "max_mean": 0.27662273465408865
+    },
+    "noisy_sequency_0.25": {
+      "rmse_mean": 0.09324484333972047,
+      "rmse_wavg": 0.11390013519727639,
+      "max_mean": 0.22064840287725643
+    },
+    "noisy_drift_0.25": {
+      "rmse_mean": 0.10606801999042063,
+      "rmse_wavg": 0.11632943795907813,
+      "max_mean": 0.3555958971038186
+    },
+    "noisy_sequency_0.5": {
+      "rmse_mean": 0.11235736430225705,
+      "rmse_wavg": 0.09715277221459544,
+      "max_mean": 0.37277510786688095
+    },
+    "noisy_drift_0.5": {
+      "rmse_mean": 0.10678483152350723,
+      "rmse_wavg": 0.11619215174798511,
+      "max_mean": 0.3736392858293291
+    },
+    "noisy_sequency_1.0": {
+      "rmse_mean": 0.15747296921948783,
+      "rmse_wavg": 0.08321676350187117,
+      "max_mean": 0.37369200026021626
+    },
+    "noisy_drift_1.0": {
+      "rmse_mean": 0.08832294094477246,
+      "rmse_wavg": 0.10151455441622102,
+      "max_mean": 0.2767381980568482
+    }
+  },
+  "prop3_fit_valid_regime": {
+    "n_points": 32,
+    "max_abs_rel_dev": 0.08876634585450405,
+    "mean_abs_rel_dev": 0.03552428590349944
+  }
+}

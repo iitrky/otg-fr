@@ -34,18 +34,19 @@ The power network therefore *computes* the aggregates that federated learning ne
 
 ![Fig. 2 OTG-FR architecture](results/figures/Fig2.png)
 
-## Main results (100 closed-loop 24-h restorations)
+## Main results (v2.0; 100 closed-loop 24-h restorations)
 
-| Method | Telecom | Priority-weighted energy (% of full information) | Critical load served |
-|---|---|---|---|
-| Local planning, rating droop | none | 73.6 % | 80.1 % |
-| Local planning, SoC-adaptive droop | none | 77.2 % | 84.9 % |
-| Same federated algorithm over telecom, availability 0.9 | 90 % | 87.9 % | 89.7 % |
-| **OTG-FR (proposed)** | **none** | **96.7 %** | **99.9 %** |
+| Method | Telecom | Priority-weighted energy (% of full information) | Critical load served | Re-interruptions per day |
+|---|---|---|---|---|
+| Local planning, rating droop | none | 74.3 % | 82.0 % | 19.5 |
+| Local planning, SoC-adaptive droop | none | 78.8 % | 88.5 % | 18.8 |
+| Same federated algorithm over telecom, availability 0.9 | 90 % | 88.9 % | 91.8 % | 20.6 |
+| **OTG-FR (proposed)** | **none** | **96.5 %** | **99.95 %** | **9.6** |
 
-* In full AC power flow the island computes the average, with decoding RMSE 0.09 on a ±1 scale; the linear channel model is within 0.19 mHz of AC.
-* Pilot frequency excursion is about 0.13 Hz, and the round time does not depend on the number of zones (4 to 64).
-* OTG-FR beats local SoC droop in 100 of 100 paired scenarios (Wilcoxon *p* = 3.9×10⁻¹⁸).
+* Theory (manuscript Section 3.3): ratio decoding is exact for any unknown stiffness; drift-ordered Walsh codes cancel
+  polynomial load/PV ramps up to degree 4; a closed-form decoding-error law matches simulation within 9 %.
+* Against time-slotted power talk with unknown droop stiffness, the decoding error in AC power flow is 0.041 versus 0.246.
+* OTG-FR beats local SoC droop in 100 of 100 paired scenarios (Holm-adjusted p < 1e-15). See `CHANGES.md` for v2.0.
 
 ## Quick start
 
@@ -67,7 +68,7 @@ pip install -r requirements.txt
 sh run_all.sh
 ```
 
-`run_all.sh` runs the 11 tests and the four experiments, then regenerates every figure, the Word documents and the anonymized supplementary archive (about 5 minutes on 4 CPU cores). All random streams are seeded, so every number is reproduced exactly.
+`run_all.sh` runs the 12 tests and the eight experiments, then regenerates every figure, the Word documents and the anonymized supplementary archive (about 20 minutes on 2 CPU cores). All random streams are seeded, so every number is reproduced exactly.
 
 Use the package directly:
 

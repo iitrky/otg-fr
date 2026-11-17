@@ -1,43 +1,55 @@
-simulated 162.26754927635193
+simulated 382.7343063354492
 full_info              PWES% 100.00 [100.00,100.00]  crit 100.00  reint    1.8 ufls  0.00  vmin 1.005 df     0 clpu 0.000
-local_rating           PWES%  73.57 [72.25,74.88]  crit  80.10  reint   43.7 ufls  0.00  vmin 1.008 df     0 clpu 0.049
-local_soc              PWES%  77.20 [75.90,78.49]  crit  84.93  reint   45.0 ufls  0.00  vmin 1.008 df     0 clpu 0.050
-telecom_p0.00          PWES%  77.82 [76.53,79.11]  crit  85.08  reint   43.5 ufls  0.04  vmin 1.006 df     0 clpu 0.050
-telecom_p0.25          PWES%  77.90 [76.56,79.23]  crit  84.82  reint   46.8 ufls  0.00  vmin 1.003 df     0 clpu 0.046
-telecom_p0.50          PWES%  78.02 [76.65,79.40]  crit  82.99  reint   49.3 ufls  0.92  vmin 1.001 df     0 clpu 0.043
-telecom_p0.75          PWES%  80.79 [79.43,82.15]  crit  84.30  reint   47.2 ufls  1.55  vmin 1.001 df     0 clpu 0.040
-telecom_p0.90          PWES%  87.88 [86.42,89.34]  crit  89.74  reint   57.2 ufls  2.87  vmin 1.001 df     0 clpu 0.043
-telecom_p1.00          PWES%  99.88 [99.67,100.09]  crit  99.83  reint   59.4 ufls  2.60  vmin 1.000 df     0 clpu 0.051
-otg                    PWES%  96.70 [96.43,96.97]  crit  99.91  reint   39.1 ufls  0.17  vmin 0.998 df   128 clpu 0.055
-otg_dp0.05             PWES%  96.01 [95.77,96.25]  crit  99.86  reint   41.1 ufls  0.56  vmin 0.997 df   129 clpu 0.057
-otg_dp0.10             PWES%  94.41 [94.16,94.66]  crit  99.74  reint   42.6 ufls  0.52  vmin 0.996 df   133 clpu 0.058
-otg_dp0.20             PWES%  90.24 [89.87,90.60]  crit  98.67  reint   40.1 ufls  1.56  vmin 0.994 df   149 clpu 0.069
-otg_noise1%            PWES%  95.27 [95.01,95.53]  crit  99.91  reint   42.3 ufls  0.30  vmin 0.998 df   124 clpu 0.063
-otg_noise2%            PWES%  92.64 [92.33,92.94]  crit  99.81  reint   49.5 ufls  0.04  vmin 1.000 df   120 clpu 0.081
-otg_L64                PWES%  96.39 [96.13,96.65]  crit  99.94  reint   33.9 ufls  0.17  vmin 0.999 df   129 clpu 0.061
-otg_no_clpu_fusion     PWES%  96.59 [96.32,96.87]  crit  99.91  reint   37.1 ufls  0.18  vmin 0.998 df   128 clpu 0.094
-otg_vs_local_soc_pwes {'mean_diff': 25.638802125, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
-otg_vs_local_soc_crit_frac {'mean_diff': 0.14979894874498212, 'wins': 99, 'losses': 0, 'p_wilcoxon': 5.697220948724935e-18}
-otg_vs_local_soc_reint_total {'mean_diff': -5.85, 'wins': 39, 'losses': 60, 'p_wilcoxon': 0.03529363113098501}
-otg_vs_local_rating_pwes {'mean_diff': 30.546166281250002, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
-otg_vs_local_rating_crit_frac {'mean_diff': 0.19812669802522212, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
-otg_vs_local_rating_reint_total {'mean_diff': -4.6, 'wins': 38, 'losses': 62, 'p_wilcoxon': 0.07801614574356333}
-otg_vs_telecom_p0.50_pwes {'mean_diff': 24.492323843750004, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
-otg_vs_telecom_p0.50_crit_frac {'mean_diff': 0.16926298102266749, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
-otg_vs_telecom_p0.50_reint_total {'mean_diff': -10.15, 'wins': 30, 'losses': 70, 'p_wilcoxon': 5.57147863898475e-05}
-otg_vs_telecom_p0.75_pwes {'mean_diff': 20.897592093750003, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
-otg_vs_telecom_p0.75_crit_frac {'mean_diff': 0.15611213048943687, 'wins': 99, 'losses': 0, 'p_wilcoxon': 5.697220948724935e-18}
-otg_vs_telecom_p0.75_reint_total {'mean_diff': -8.12, 'wins': 35, 'losses': 65, 'p_wilcoxon': 0.005490626718224558}
-otg_vs_telecom_p0.90_pwes {'mean_diff': 11.41035637500001, 'wins': 87, 'losses': 13, 'p_wilcoxon': 2.8379592703006497e-15}
-otg_vs_telecom_p0.90_crit_frac {'mean_diff': 0.10170357548355709, 'wins': 86, 'losses': 1, 'p_wilcoxon': 5.955623097971393e-16}
-otg_vs_telecom_p0.90_reint_total {'mean_diff': -18.11, 'wins': 34, 'losses': 66, 'p_wilcoxon': 2.9181361285259902e-05}
-otg_vs_telecom_p1.00_pwes {'mean_diff': -4.396220343749992, 'wins': 4, 'losses': 96, 'p_wilcoxon': 1.4573676877736123e-17}
-otg_vs_telecom_p1.00_crit_frac {'mean_diff': 0.0008736973358744604, 'wins': 15, 'losses': 4, 'p_wilcoxon': 0.04658229058763961}
-otg_vs_telecom_p1.00_reint_total {'mean_diff': -20.27, 'wins': 24, 'losses': 74, 'p_wilcoxon': 1.4870249732708138e-08}
-otg_vs_otg_no_clpu_fusion_pwes {'mean_diff': 0.15777459375000574, 'wins': 62, 'losses': 38, 'p_wilcoxon': 0.047650167452079104}
-otg_vs_otg_no_clpu_fusion_crit_frac {'mean_diff': 2.744718381250011e-05, 'wins': 4, 'losses': 5, 'p_wilcoxon': 0.6686565892582257}
-otg_vs_otg_no_clpu_fusion_reint_total {'mean_diff': 2.0, 'wins': 45, 'losses': 53, 'p_wilcoxon': 0.8371096149623372}
-otg_vs_otg_dp0.10_pwes {'mean_diff': 3.062450656249997, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
-otg_vs_otg_dp0.10_crit_frac {'mean_diff': 0.001732847410891706, 'wins': 30, 'losses': 3, 'p_wilcoxon': 8.781958685163369e-06}
-otg_vs_otg_dp0.10_reint_total {'mean_diff': -3.5, 'wins': 40, 'losses': 56, 'p_wilcoxon': 0.042120996996473065}
-total 162.35493516921997
+local_rating           PWES%  74.27 [72.91,75.63]  crit  82.04  reint   19.5 ufls  0.00  vmin 1.008 df     0 clpu 0.046
+local_soc              PWES%  78.84 [77.51,80.17]  crit  88.51  reint   18.8 ufls  0.00  vmin 1.009 df     0 clpu 0.050
+telecom_p0.00          PWES%  79.06 [77.67,80.45]  crit  88.00  reint   21.4 ufls  0.00  vmin 1.007 df     0 clpu 0.049
+telecom_p0.25          PWES%  79.21 [77.84,80.59]  crit  87.51  reint   25.6 ufls  0.00  vmin 1.003 df     0 clpu 0.046
+telecom_p0.50          PWES%  79.19 [77.79,80.60]  crit  85.30  reint   30.6 ufls  0.68  vmin 1.002 df     0 clpu 0.043
+telecom_p0.75          PWES%  81.13 [79.70,82.57]  crit  85.21  reint   23.7 ufls  1.19  vmin 1.003 df     0 clpu 0.041
+telecom_p0.90          PWES%  88.90 [87.59,90.21]  crit  91.84  reint   20.6 ufls  1.45  vmin 1.003 df     0 clpu 0.045
+telecom_p1.00          PWES% 100.17 [100.01,100.34]  crit  99.92  reint   13.2 ufls  0.40  vmin 1.003 df     0 clpu 0.054
+otg                    PWES%  96.53 [96.24,96.82]  crit  99.95  reint    9.6 ufls  0.13  vmin 1.000 df   124 clpu 0.058
+otg_dp0.05             PWES%  95.87 [95.60,96.14]  crit  99.85  reint   11.2 ufls  0.09  vmin 0.999 df   127 clpu 0.057
+otg_dp0.10             PWES%  94.43 [94.15,94.72]  crit  99.69  reint   15.3 ufls  0.55  vmin 0.997 df   134 clpu 0.063
+otg_dp0.20             PWES%  90.13 [89.74,90.52]  crit  98.74  reint   17.6 ufls  1.56  vmin 0.996 df   152 clpu 0.074
+otg_noise1%            PWES%  95.29 [95.02,95.56]  crit  99.93  reint   12.0 ufls  0.07  vmin 1.000 df   124 clpu 0.066
+otg_noise2%            PWES%  92.75 [92.46,93.03]  crit  99.83  reint   19.0 ufls  0.04  vmin 1.001 df   123 clpu 0.080
+otg_L64                PWES%  96.04 [95.75,96.33]  crit  99.93  reint   10.1 ufls  0.00  vmin 1.000 df   126 clpu 0.058
+otg_no_clpu_fusion     PWES%  96.49 [96.21,96.77]  crit  99.95  reint    8.8 ufls  0.07  vmin 1.000 df   124 clpu 0.103
+otg_sequency_codes     PWES%  96.39 [96.11,96.68]  crit  99.94  reint    9.7 ufls  0.02  vmin 1.000 df   128 clpu 0.057
+otg_no_price_avg       PWES%  96.28 [96.03,96.53]  crit  98.83  reint   47.6 ufls  0.22  vmin 1.000 df   127 clpu 0.057
+otg_v1                 PWES%  96.70 [96.43,96.97]  crit  99.91  reint   39.1 ufls  0.17  vmin 0.998 df   128 clpu 0.055
+otg_vs_local_soc_pwes {'mean_diff': 23.175831437499998, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
+otg_vs_local_soc_crit_frac {'mean_diff': 0.11448957868699576, 'wins': 89, 'losses': 2, 'p_wilcoxon': 1.7166994250290204e-16}
+otg_vs_local_soc_reint_total {'mean_diff': -9.15, 'wins': 15, 'losses': 79, 'p_wilcoxon': 4.767308720454564e-10}
+otg_vs_local_rating_pwes {'mean_diff': 29.34261925, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
+otg_vs_local_rating_crit_frac {'mean_diff': 0.17910476055310012, 'wins': 98, 'losses': 0, 'p_wilcoxon': 8.33039747348591e-18}
+otg_vs_local_rating_reint_total {'mean_diff': -9.9, 'wins': 16, 'losses': 81, 'p_wilcoxon': 4.92378874270896e-12}
+otg_vs_telecom_p0.50_pwes {'mean_diff': 22.655931031250006, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
+otg_vs_telecom_p0.50_crit_frac {'mean_diff': 0.14656791087141655, 'wins': 99, 'losses': 1, 'p_wilcoxon': 4.0161556854627e-18}
+otg_vs_telecom_p0.50_reint_total {'mean_diff': -20.97, 'wins': 2, 'losses': 97, 'p_wilcoxon': 7.89650629031689e-18}
+otg_vs_telecom_p0.75_pwes {'mean_diff': 20.14149153125, 'wins': 100, 'losses': 0, 'p_wilcoxon': 3.896559845095909e-18}
+otg_vs_telecom_p0.75_crit_frac {'mean_diff': 0.14743550038522374, 'wins': 98, 'losses': 0, 'p_wilcoxon': 8.33039747348591e-18}
+otg_vs_telecom_p0.75_reint_total {'mean_diff': -14.13, 'wins': 7, 'losses': 91, 'p_wilcoxon': 7.91438193519309e-16}
+otg_vs_telecom_p0.90_pwes {'mean_diff': 9.910020125000004, 'wins': 88, 'losses': 12, 'p_wilcoxon': 3.63574062749329e-15}
+otg_vs_telecom_p0.90_crit_frac {'mean_diff': 0.08112748874741502, 'wins': 81, 'losses': 1, 'p_wilcoxon': 4.014678276838442e-15}
+otg_vs_telecom_p0.90_reint_total {'mean_diff': -10.98, 'wins': 10, 'losses': 86, 'p_wilcoxon': 1.472288323960726e-13}
+otg_vs_telecom_p1.00_pwes {'mean_diff': -4.998017249999999, 'wins': 1, 'losses': 99, 'p_wilcoxon': 4.0161556854627e-18}
+otg_vs_telecom_p1.00_crit_frac {'mean_diff': 0.00033354790965492323, 'wins': 6, 'losses': 1, 'p_wilcoxon': 0.057779571123597204}
+otg_vs_telecom_p1.00_reint_total {'mean_diff': -3.58, 'wins': 43, 'losses': 50, 'p_wilcoxon': 0.008002385534212998}
+otg_vs_otg_no_clpu_fusion_pwes {'mean_diff': 0.04799640625000563, 'wins': 53, 'losses': 47, 'p_wilcoxon': 0.6351513625895362}
+otg_vs_otg_no_clpu_fusion_crit_frac {'mean_diff': 0.0, 'wins': 1, 'losses': 1, 'p_wilcoxon': 1.0}
+otg_vs_otg_no_clpu_fusion_reint_total {'mean_diff': 0.8, 'wins': 44, 'losses': 36, 'p_wilcoxon': 0.1574588011139305}
+otg_vs_otg_dp0.10_pwes {'mean_diff': 2.810830968749997, 'wins': 99, 'losses': 1, 'p_wilcoxon': 4.0161556854627e-18}
+otg_vs_otg_dp0.10_crit_frac {'mean_diff': 0.002662959733992968, 'wins': 40, 'losses': 3, 'p_wilcoxon': 1.0243251959281261e-07}
+otg_vs_otg_dp0.10_reint_total {'mean_diff': -5.75, 'wins': 19, 'losses': 75, 'p_wilcoxon': 4.189755248083095e-11}
+otg_vs_otg_sequency_codes_pwes {'mean_diff': 0.17852693750000256, 'wins': 58, 'losses': 42, 'p_wilcoxon': 0.10098833668087576}
+otg_vs_otg_sequency_codes_crit_frac {'mean_diff': 0.00010137464012002884, 'wins': 3, 'losses': 1, 'p_wilcoxon': 0.31731050786291415}
+otg_vs_otg_sequency_codes_reint_total {'mean_diff': -0.1, 'wins': 40, 'losses': 46, 'p_wilcoxon': 0.44877639263275426}
+otg_vs_otg_no_price_avg_pwes {'mean_diff': 0.3127280312500021, 'wins': 59, 'losses': 41, 'p_wilcoxon': 0.06238182359673901}
+otg_vs_otg_no_price_avg_crit_frac {'mean_diff': 0.011284518064960955, 'wins': 98, 'losses': 0, 'p_wilcoxon': 1.0585626194161462e-18}
+otg_vs_otg_no_price_avg_reint_total {'mean_diff': -38.05, 'wins': 2, 'losses': 98, 'p_wilcoxon': 4.2454817348793055e-18}
+otg_vs_otg_v1_pwes {'mean_diff': -0.2399193437500024, 'wins': 44, 'losses': 56, 'p_wilcoxon': 0.10098833668087576}
+otg_vs_otg_v1_crit_frac {'mean_diff': 0.00041416609221037404, 'wins': 6, 'losses': 3, 'p_wilcoxon': 0.142266508572912}
+otg_vs_otg_v1_reint_total {'mean_diff': -29.51, 'wins': 0, 'losses': 100, 'p_wilcoxon': 3.867428403595487e-18}
+total 382.7885015010834

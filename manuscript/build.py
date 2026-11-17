@@ -150,9 +150,9 @@ Arul Dalton G^1,\\*^ · Marisargunam S^2^
 :::
 
 ::: {custom-style="Affiliation"}
-^1^ Department of Computer Science and Engineering, Saveetha Engineering College, Chennai, India (ORCID 0000-0002-5981-7176)
+^1^ Department of Computer Science and Engineering, Saveetha Engineering College, Chennai, Tamil Nadu, India (ORCID 0000-0002-5981-7176)
 
-^2^ Department of Electrical and Electronics Engineering, Saveetha Engineering College, Chennai, India (ORCID 0009-0008-5157-2048; marisargunams@saveetha.ac.in)
+^2^ Department of Electrical and Electronics Engineering, Saveetha Engineering College, Chennai, Tamil Nadu, India (ORCID 0009-0008-5157-2048; marisargunams@saveetha.ac.in)
 
 \\*Correspondence: Arul Dalton G (aruldalton@saveetha.ac.in)
 :::
@@ -185,12 +185,12 @@ def build_cover_letter():
 
 
 def build_submission():
-    """Copy the journal submission set (anonymized manuscript, title page, Fig1-Fig6 TIFF) to submission/."""
+    """Copy the journal submission set (anonymized manuscript, title page, Fig1-Fig9 TIFF) to submission/."""
     import shutil
     os.makedirs("submission", exist_ok=True)
     for f in ["Manuscript_anonymized.docx", "Title_Page.docx", "Cover_Letter.docx"]:
         shutil.copy(f, os.path.join("submission", f))
-    for n in range(1, 7):
+    for n in range(1, 10):
         src = os.path.join("..", "results", "figures", f"Fig{n}.tif")
         if os.path.exists(src):
             shutil.copy(src, os.path.join("submission", f"Fig{n}.tif"))

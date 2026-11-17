@@ -3,10 +3,10 @@ title: "Cover Letter"
 ---
 
 ::: {custom-style="Affiliation"}
-Department of Computer Science and Engineering, Saveetha Engineering College, Chennai, India
+Department of Computer Science and Engineering, Saveetha Engineering College, Chennai, Tamil Nadu, India
 :::
 
-11 November 2026
+17 November 2026
 
 The Editor-in-Chief\
 *Journal of Electrical Engineering & Technology*\
@@ -22,10 +22,10 @@ After extreme weather events, distribution feeders are increasingly restored as 
 
 The main contributions of the work are as follows.
 
-1. **A new concept.** The droop steady state of an alternating-current island is used as an analogue aggregation server for federated algorithms. This is the power-system counterpart of over-the-air computation, with the power grid replacing the radio channel.
-2. **Ratio-coded droop aggregation (Algorithm 2).** Orthogonal Walsh-coded power pilots are combined with ratio decoding, which makes the computation invariant to the unknown network, losses and droop gains. A self-normalizing amplitude law bounds the frequency excursion without any communication.
-3. **Over-the-grid federated restoration (Algorithm 1).** This is a priority-aware restoration scheme in which zones learn cold-load pick-up federatively and negotiate an island-wide energy price entirely through the grid frequency.
-4. **Comprehensive validation.** The method is validated with chip-by-chip AC droop power flow, small-signal inverter dynamics and 100 paired closed-loop 24-hour restorations on an islanded IEEE 33-bus feeder. It recovers 96.7% of the priority-weighted energy of a full-information coordinator and serves 99.9% of critical-load energy, against 77.2% and 84.9% for the best communication-free practice. A telecom-based implementation needs more than about 95% link availability to match it.
+1. **Concept.** The droop steady state of an alternating-current island is used as an analogue aggregation server for federated algorithms, without the channel model, time slots or per-zone messages that droop-signalling ("power talk") schemes require.
+2. **Ratio-coded droop aggregation with analysis.** We prove that ratio decoding is exact for any unknown droop stiffness and network (Proposition 1). We show that ordering Walsh codes by their polynomial drift order cancels load and photovoltaic ramps up to the fourth degree, whereas the usual ordering rejects only constants (Proposition 2). We also derive a closed-form decoding-error law with its validity range, which matches simulation to within 9% (Proposition 3), and an excursion bound.
+3. **Over-the-grid federated restoration.** Zones learn cold-load pick-up federatively and agree on an island-wide energy price through the grid frequency; ergodic averaging of the price removes the oscillation of the dual update and cuts load re-interruptions fourfold.
+4. **Rigorous comparison and validation.** A factorial comparison with time-slotted power talk shows a sixfold lower decoding error in AC power flow when the droop stiffness is unknown (0.041 against 0.246). One hundred paired 24-hour restorations on an islanded IEEE 33-bus feeder give 96.5% of the priority-weighted energy of a full-information coordinator and 99.95% of critical-load energy with 9.6 re-interruptions per day, against 78.8%, 88.5% and 18.8 for the best communication-free practice. We also report a sensitivity study of every design parameter, photovoltaic-ramp stress tests, and paired statistics with bootstrap confidence intervals, effect sizes and Holm correction.
 
 We believe the manuscript fits the scope of the journal in power systems, distribution automation and smart-grid resilience. It will interest researchers and utility engineers working on service restoration, grid-forming inverters and the operation of microgrids during communication blackouts.
 
@@ -39,9 +39,7 @@ We believe the manuscript fits the scope of the journal in power systems, distri
 * in accordance with the journal's policy, the use of a large language model is documented in Section 4.5 of the manuscript, and the authors take full responsibility for the content;
 * all code and data supporting the findings are openly available at https://github.com/iitrky/otg-fr and are also supplied as Online Resource 1 (an anonymized archive for reviewers).
 
-**Submitted files:** anonymized manuscript (Word), title page with author information and declarations (Word), Fig1–Fig6 (600 dpi TIFF) and Online Resource 1 (ESM_1.zip).
-
-**Suggested reviewers (optional):** [Name, institution, institutional e-mail address — to be completed by the authors, ensuring that the suggested reviewers are independent of the authors and the work]
+**Submitted files:** anonymized manuscript (Word), title page with author information and declarations (Word), Fig1–Fig9 (600 dpi TIFF) and Online Resource 1 (ESM_1.zip).
 
 Thank you for considering our manuscript. We look forward to hearing from you.
 
@@ -49,7 +47,7 @@ Yours sincerely,
 
 **Arul Dalton G** (Corresponding author)\
 Department of Computer Science and Engineering\
-Saveetha Engineering College, Chennai, India\
+Saveetha Engineering College, Chennai, Tamil Nadu, India\
 E-mail: aruldalton@saveetha.ac.in\
 ORCID: 0000-0002-5981-7176
 

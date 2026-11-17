@@ -37,7 +37,7 @@ T_GRID = np.linspace(0.25, 3.0, 45)
 PRIOR_M, PRIOR_M_SD = 2.0, 0.6
 PRIOR_T, PRIOR_T_SD = 1.2, 0.6
 KAPPA = 0.5           # weight on other zones' CLPU information (partial personalisation)
-ROUNDS = 3            # aggregation rounds per 15-min step (3 x 64 s)
+ROUNDS = 5            # aggregation rounds per 15-min step (5 x 128 s = 640 s of the 900-s step); v1.0: 3
 ETA_LAMBDA = 1.0
 MAX_LOG_STEP = 0.25   # trust region on the log-price update per round
 DF_TARGET_HZ = 0.10   # peak frequency excursion targeted by the pilot amplitude control
@@ -45,6 +45,7 @@ AMP_MAX_MW = 0.015    # pilot amplitude cap per code and zone (inverter head-roo
 DEFICIT_MARGIN = 0.0  # shed energised blocks only when the perceived gap is below -margin
 AGG_BETA = 0.0        # smoothing of decoded aggregates across rounds (0 = none)
 RHO_H = 8.0           # hours of service lost that a re-interruption is worth (hysteresis)
+PRICE_AVG = True      # ergodic (geometric-mean) averaging of the price over the R rounds of a step; v1.0: False
 TD_OUTAGE = 3.0       # h, saturation constant of CLPU magnitude vs outage duration
 D0_OUTAGE = 2.0       # h, outage duration before the restoration window starts
 
@@ -189,7 +190,22 @@ ON_MEFF = np.zeros(len(LOAD_BLOCKS))      # set per run: CLPU magnitude factor c
 
 # ------------------------------------------------------------------ simulation
 def run(scn, method, p_link=1.0, dp_sigma=0.0, otg_amp=0.006, otg_len=128, seed_offset=0, pf_check=True,
-        load_sigma_frac=0.005, fuse_clpu=True):
+        load_sigma_frac=0.005, fuse_clpu=True, code_order="drift", pv_ramp=0.0, overrides=None):
+    """pv_ramp: multiplier on the PV change that occurs during each RCD round (0 = v1.0 channel).
+    overrides: dict of module parameters for sensitivity studies (ROUNDS, ETA_LAMBDA, RHO_H, KAPPA)."""
+    global ON_MEFF, ROUNDS, ETA_LAMBDA, RHO_H, KAPPA, PRICE_AVG
+    saved = dict(ROUNDS=ROUNDS, ETA_LAMBDA=ETA_LAMBDA, RHO_H=RHO_H, KAPPA=KAPPA, PRICE_AVG=PRICE_AVG)
+    for kk, vv in (overrides or {}).items():
+        globals()[kk] = vv
+    try:
+        return _run(scn, method, p_link, dp_sigma, otg_amp, otg_len, seed_offset, pf_check, load_sigma_frac,
+                    fuse_clpu, code_order, pv_ramp)
+    finally:
+        globals().update(saved)
+
+
+def _run(scn, method, p_link, dp_sigma, otg_amp, otg_len, seed_offset, pf_check, load_sigma_frac, fuse_clpu,
+         code_order, pv_ramp):
     global ON_MEFF
     rng_m = np.random.default_rng(scn["seed"] * 1000 + 17 + seed_offset)   # method-specific randomness
     rng_link = np.random.default_rng(scn["seed"] * 7 + 3)                 # same link process across p
@@ -207,7 +223,7 @@ def run(scn, method, p_link=1.0, dp_sigma=0.0, otg_amp=0.006, otg_len=128, seed_
     quantities = ([("cp%d" % i, 3.0, False) for i in range(len(CHECKPOINTS_H))] +
                   [("head", 1.5, False), ("req", 1.5, False),
                    ("clpu_m", 1.0, True), ("clpu_t", 1.5, True), ("prec_m", 1.0, False), ("prec_t", 1.0, False)])
-    ch = RCDChannel(quantities, length=otg_len, amplitude_mw=otg_amp)
+    ch = RCDChannel(quantities, length=otg_len, amplitude_mw=otg_amp, code_order=code_order)
     amp = otg_amp
     agg_ema = [None] * N_ZONES
     # telecom link Markov chains
@@ -253,6 +269,7 @@ def run(scn, method, p_link=1.0, dp_sigma=0.0, otg_amp=0.006, otg_len=128, seed_
             H = headroom.sum(); R = sum(p[3].sum() for p in plans)
             phi = np.full(N_ZONES, np.clip(H / R, 0, 1) if R > 0 else 1.0)
         else:
+            loglam_hist = []
             for r in range(ROUNDS):
                 plans = [zone_plan(z, k, lam[z], theta[z], on, age, off_dur, pv_fc[z], e_avail[z], E_cap[z],
                                    scn["omega"], deficit[z]) for z in range(N_ZONES)]
@@ -273,8 +290,12 @@ def run(scn, method, p_link=1.0, dp_sigma=0.0, otg_amp=0.006, otg_len=128, seed_
                     ch.A = amp
                     P = ch.pilot_powers(Z)
                     Dk = droop_gains(NET["p_rated"], soe if soc_droop else None)
+                    # PV change during this round (128 s of the 15-min step), linear + quadratic part
+                    kn = min(k + 1, STEPS - 1)
+                    dpv = (scn["pv"][:, kn] - scn["pv"][:, k]).sum() * otg_len / (DT * 3600)
                     meas = linear_channel(P, Dk.sum(), rng_m, load_sigma_mw=load_sigma_frac * max(last_load.sum(), 0.3),
-                                          n_listeners=N_ZONES)
+                                          n_listeners=N_ZONES, ramp_mw=-pv_ramp * dpv,
+                                          curv_mw=pv_ramp * 0.25 * abs(dpv))
                     # self-normalising amplitude: every zone sees the same frequency peak, so all
                     # zones apply the same quantised gain (ratio decoding is invariant to it)
                     pk = np.abs(meas[0]).max() * F0_HZ
@@ -314,6 +335,7 @@ def run(scn, method, p_link=1.0, dp_sigma=0.0, otg_amp=0.006, otg_len=128, seed_
                     lam[z] = float(np.clip(lam[z] * np.exp(np.clip(-ETA_LAMBDA * gap, -MAX_LOG_STEP, MAX_LOG_STEP)),
                                            0.02, 60.0))
                     deficit[z] = gap < -DEFICIT_MARGIN
+                loglam_hist.append(np.log(lam))
                 # ---- federated CLPU fusion (personalised)
                 for z in range(N_ZONES):
                     if agg[z] is not None and coordinated and fuse_clpu:
@@ -324,6 +346,8 @@ def run(scn, method, p_link=1.0, dp_sigma=0.0, otg_amp=0.006, otg_len=128, seed_
                                                              lam_all - summaries[z][1])
                     else:
                         theta[z] = theta_local[z]
+            if PRICE_AVG:    # each zone averages its OWN price copies over the rounds (no communication)
+                lam = np.exp(np.mean(loglam_hist, axis=0))
             plans = [zone_plan(z, k, lam[z], theta[z], on, age, off_dur, pv_fc[z], e_avail[z], E_cap[z],
                                scn["omega"], deficit[z]) for z in range(N_ZONES)]
             phi = np.zeros(N_ZONES)

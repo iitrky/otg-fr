@@ -22,6 +22,9 @@ CONFIGS = {
     "otg_noise2%": ("otg", dict(load_sigma_frac=0.02)),
     "otg_L64": ("otg", dict(otg_len=64)),
     "otg_no_clpu_fusion": ("otg", dict(fuse_clpu=False)),
+    "otg_sequency_codes": ("otg", dict(code_order="sequency")),     # v1.0 code ordering (ablation)
+    "otg_no_price_avg": ("otg", dict(overrides=dict(PRICE_AVG=False))),
+    "otg_v1": ("otg", dict(code_order="sequency", overrides=dict(ROUNDS=3, PRICE_AVG=False))),   # v1.0 configuration
 }
 KEYS = ["pwes", "crit_frac", "energy", "reint_planned", "reint_ufls", "reint_total", "vmin", "vmax",
         "df_pilot_mhz", "min_soe", "agg_err"]
@@ -47,7 +50,7 @@ def ci(x):
 
 def main():
     t0 = time.time()
-    with Pool(4) as pool:
+    with Pool(min(4, os.cpu_count() or 1)) as pool:
         per = pool.map(one, range(N_SCEN))
     print("simulated", time.time() - t0)
     summary = {}
@@ -58,7 +61,8 @@ def main():
     tests = {}
     for a, b in [("otg", "local_soc"), ("otg", "local_rating"), ("otg", "telecom_p0.50"), ("otg", "telecom_p0.75"),
                  ("otg", "telecom_p0.90"), ("otg", "telecom_p1.00"), ("otg", "otg_no_clpu_fusion"),
-                 ("otg", "otg_dp0.10")]:
+                 ("otg", "otg_dp0.10"), ("otg", "otg_sequency_codes"),
+                 ("otg", "otg_no_price_avg"), ("otg", "otg_v1")]:
         for k in ["pwes", "crit_frac", "reint_total"]:
             x = np.array([p[a][k] for p in per]); y = np.array([p[b][k] for p in per])
             d = x - y

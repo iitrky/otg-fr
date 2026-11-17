@@ -55,7 +55,8 @@ def main():
                                                           naive_mae_mean=float(En.mean()))
     # privacy accounting of the dither (per quantity, per round, sensitivity 1 in code units)
     res["dp"] = {f"{s:.2f}": dict(eps_per_round=float(zcdp_epsilon(1.0, s, 1)),
-                                  eps_24h_288_rounds=float(zcdp_epsilon(1.0, s, 288))) for s in [0.05, 0.1, 0.2, 0.5, 1.0]}
+                                  eps_24h_288_rounds=float(zcdp_epsilon(1.0, s, 288)),
+                                  eps_24h_480_rounds=float(zcdp_epsilon(1.0, s, 480))) for s in [0.05, 0.1, 0.2, 0.5, 1.0]}   # 96 steps x R rounds
     json.dump(res, open(os.path.join(OUT, "exp4_scaling_robustness.json"), "w"), indent=2)
     print(json.dumps(res, indent=1))
 

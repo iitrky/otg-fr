@@ -3,7 +3,7 @@
 Rules applied: no titles or captions inside figures, panel letters (a), (b), (c) only,
 Arial-metric sans-serif font (Liberation Sans) at a uniform 8 pt, lines >= 0.3 pt,
 patterns/markers in addition to colour, 174 mm single-column width, 600 dpi,
-files named Fig1 ... Fig6 (TIFF for submission, PNG for the Word file, PDF vector).
+files named Fig1 ... Fig9 (TIFF for submission, PNG for the Word file, PDF vector).
 Graphics program: Python 3 / Matplotlib.
 """
 import os, sys, json
@@ -208,7 +208,7 @@ def fig4_outcomes():
     ax.axhline(S["local_soc"]["pwes_rel_pct"][0], color=C["local_soc"], lw=1.2, ls="--", label="Local SoC droop")
     ax.set_xlabel("Telecom link availability p"); ax.set_ylabel("PWES (%)"); ax.set_ylim(70, 104)
     ax.legend(loc="center left", bbox_to_anchor=(0.0, 0.62)); panel(ax, "c", -0.22)
-    fig.tight_layout(w_pad=1.2); save(fig, 4)
+    fig.tight_layout(w_pad=1.2); save(fig, 6)
 
 
 # ---------------------------------------------------------------- Fig. 5 traces
@@ -228,7 +228,7 @@ def fig5_traces():
         a.set_xlabel("Time of day (h)"); a.set_xticks([18, 24, 30, 36, 42]); a.set_xticklabels(["18", "00", "06", "12", "18"])
         panel(a, l, -0.24)
     axs[0].legend(loc="upper center")
-    fig.tight_layout(w_pad=1.4); save(fig, 5)
+    fig.tight_layout(w_pad=1.4); save(fig, 7)
 
 
 # ---------------------------------------------------------------- Fig. 6 robustness and scaling
@@ -260,9 +260,104 @@ def fig6_robust():
     h1, l1 = ax.get_legend_handles_labels(); h2, l2 = ax2.get_legend_handles_labels()
     ax.legend(h1 + h2, l1 + l2, loc="upper left", fontsize=FS - 2)
     panel(ax, "c", -0.24)
-    fig.tight_layout(w_pad=1.4); save(fig, 6)
+    fig.tight_layout(w_pad=1.4); save(fig, 8)
+
+
+# ---------------------------------------------------------------- Fig. 4 theory verification
+def fig4_theory():
+    T = json.load(open(os.path.join(R, "exp5_theory.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(W, 2.3))
+    ax = axs[0]
+    mk = dict(prop3_L=("o", "Code length L"), prop3_A=("s", "Amplitude A"), prop3_noise=("^", "Load noise"), prop3_N=("D", "Zones N"))
+    for key, (m, lab) in mk.items():
+        pr = [v["pred_rmse_mean"] for v in T[key].values()] + [v["pred_rmse_wavg"] for v in T[key].values()]
+        sm = [v["sim_rmse_mean"] for v in T[key].values()] + [v["sim_rmse_wavg"] for v in T[key].values()]
+        ax.scatter(pr, sm, marker=m, s=14, facecolor="white", edgecolor=C["otg"], lw=0.8, label=lab, zorder=3)
+    ax.plot([0.02, 3], [0.02, 3], color=C["ref"], lw=0.8, ls="--")
+    ax.axvline(0.2, color=C["ink2"], lw=0.6, ls=":")
+    ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlim(0.02, 1); ax.set_ylim(0.02, 7)
+    ax.set_xlabel("Predicted RMSE, Prop. 3"); ax.set_ylabel("Simulated RMSE"); ax.legend(loc="upper left", fontsize=FS - 2)
+    panel(ax, "a", -0.24)
+    ramps = [0.0, 0.05, 0.1, 0.25, 0.5, 1.0]
+    ax = axs[1]
+    for order, c, ls, m, lab in [("sequency", C["local_soc"], "--", "s", "Sequency order (v1)"), ("drift", C["otg"], "-", "o", "Drift order (proposed)")]:
+        ax.plot(ramps, [T["prop2_lin"][order][str(r)]["sim_rmse_mean"] for r in ramps], ls=ls, marker=m, ms=4, color=c, label=lab)
+    ax.set_xlabel("Net-load ramp per round (MW)"); ax.set_ylabel("RMSE of decoded mean"); ax.set_ylim(0, 0.3)
+    ax.legend(loc="upper left"); panel(ax, "b", -0.24)
+    ax = axs[2]
+    rr = [0.0, 0.25, 0.5, 1.0]
+    for order, c, ls, m, lab in [("sequency", C["local_soc"], "--", "s", "Sequency order (v1)"), ("drift", C["otg"], "-", "o", "Drift order (proposed)")]:
+        ax.plot(rr, [T["prop2_ac"][f"noisefree_{order}_{r}"]["rmse_mean"] for r in rr], ls=ls, marker=m, ms=4, color=c, label=lab)
+    ax.set_xlabel("PV-park ramp per round (MW)"); ax.set_ylabel("Ramp-induced RMSE, AC"); ax.set_ylim(0, 0.15)
+    ax.legend(loc="upper left"); panel(ax, "c", -0.24)
+    fig.tight_layout(w_pad=1.4); save(fig, 4)
+
+
+# ---------------------------------------------------------------- Fig. 5 comparison with power talk
+SCH = [("PT-TDMA", "Power talk, TDMA", C["local_soc"], "--", "s"), ("PT-TDMA+ratio", "TDMA with ratio decoding", C["local_rating"], "-.", "^"),
+       ("CDMA-direct", "Coded, assumed stiffness", C["dp"], ":", "D"), ("RCD", "RCD (proposed)", C["otg"], "-", "o")]
+
+
+def fig5_powertalk():
+    P = json.load(open(os.path.join(R, "exp6_powertalk.json")))
+    fig, axs = plt.subplots(1, 3, figsize=(W, 2.4))
+    Ns = [4, 8, 16, 32, 64]
+    for ax, cond, letter, ylab in [(axs[0], "soc_unknown", "a", "RMSE of decoded mean"), (axs[1], "trip", "b", "RMSE of decoded mean")]:
+        for k, lab, c, ls, m in SCH:
+            v = [P["vs_N"][cond][k][str(n)]["rmse_mean"] if P["vs_N"][cond][k][str(n)] else np.nan for n in Ns]
+            ax.plot(Ns, v, ls=ls, marker=m, ms=3.5, color=c, label=lab)
+        ax.set_xscale("log", base=2); ax.set_xlabel("Number of zones N"); ax.set_ylabel(ylab); ax.set_ylim(0, 0.4)
+        panel(ax, letter, -0.24)
+    axs[0].legend(loc="upper right", fontsize=FS - 2)
+    ax = axs[2]
+    for k, lab, c, ls, m in SCH:
+        v = [P["latency"][k][str(n)] if P["latency"][k][str(n)] else np.nan for n in Ns]
+        ax.plot(Ns, v, ls=ls, marker=m, ms=3.5, color=c, label=lab)
+    ax.set_xscale("log", base=2); ax.set_yscale("log", base=2); ax.set_ylim(16, 8192)
+    ax.text(4.3, 3000, "Not reached at N = 4, 8\n(bias floor): power talk,\ncoded with assumed stiffness", fontsize=FS - 2.5, va="top")
+    ax.set_xlabel("Number of zones N"); ax.set_ylabel("Round time for RMSE ≤ 0.1 (s)"); panel(ax, "c", -0.24)
+    fig.tight_layout(w_pad=1.4); save(fig, 5)
+
+
+# ---------------------------------------------------------------- Fig. 9 sensitivity of OTG-FR
+def fig9_sensitivity():
+    S = json.load(open(os.path.join(R, "exp7_sensitivity.json")))["summary"]
+    fig, axs = plt.subplots(1, 3, figsize=(W, 2.4))
+    ax = axs[0]
+    Rs = [1, 2, 3, 4, 5, 7]
+    key = lambda r: "default" if r == 5 else f"R={r}"
+    ax.plot(Rs, [S[key(r)]["pwes_rel_pct"][0] for r in Rs], "-o", color=C["otg"], ms=4, label="With price averaging")
+    Rn = [3, 4, 5]
+    ax.plot(Rn, [S[f"no_avg_R={r}"]["pwes_rel_pct"][0] for r in Rn], "--s", color=C["local_soc"], ms=4, label="Without averaging")
+    ax.set_xlabel("Rounds per step R"); ax.set_ylabel("PWES (%)"); ax.set_ylim(88, 98); ax.legend(loc="lower right")
+    panel(ax, "a", -0.24)
+    ax = axs[1]
+    pts = [("default", "Default", "o"), ("eta=0.5", "η = 0.5", "s"), ("eta=2", "η = 2", "^"), ("rho=0h", "ρ = 0 h", "v"),
+           ("rho=4h", "ρ = 4 h", "<"), ("rho=16h", "ρ = 16 h", ">"), ("rho=32h", "ρ = 32 h", "D"), ("no_avg_R=5", "No averaging", "x")]
+    for k, lab, m in pts:
+        ax.scatter(S[k]["reint_total"][0], S[k]["pwes_rel_pct"][0], marker=m, s=18, color=C["otg"] if k == "default" else C["ink2"],
+                   facecolor="white" if m != "x" else None, lw=0.8, zorder=3)
+        off = {"rho=16h": (5, 5), "rho=32h": (7, -3), "eta=0.5": (7, -11), "no_avg_R=5": (-38, 5), "rho=0h": (7, -3), "eta=2": (-22, 5)}.get(k, (3, 2))
+        ax.annotate(lab, (S[k]["reint_total"][0], S[k]["pwes_rel_pct"][0]), xytext=off, textcoords="offset points", fontsize=FS - 2.5)
+    ax.set_xlim(0, 52); ax.set_ylim(96.05, 97.15)
+    ax.set_xlabel("Re-interruptions per day"); ax.set_ylabel("PWES (%)"); panel(ax, "b", -0.24)
+    ax = axs[2]
+    groups = [("1x", "default", "default"), ("5x", "ramp5_drift", "ramp5_sequency"), ("10x", "ramp10_drift", "ramp10_sequency")]
+    for i, (lab, d, q) in enumerate(groups):
+        for j, (k, c, h, l) in enumerate([(d, C["otg"], "", "Drift order (proposed)"), (q, C["local_soc"], "//", "Sequency order (v1)")]):
+            if lab == "1x" and j == 1:
+                continue
+            m, lo, hi = S[k]["pwes_rel_pct"]
+            ax.bar(i + (j - 0.5) * 0.36 * (lab != "1x"), m, width=0.34, color=c, hatch=h, edgecolor="black", lw=0.4,
+                   label=l if i == 1 else None)
+            ax.errorbar(i + (j - 0.5) * 0.36 * (lab != "1x"), m, yerr=[[m - lo], [hi - m]], color=C["ink"], lw=0.7, capsize=2)
+    ax.set_xticks(range(3)); ax.set_xticklabels(["Nominal", "Ramp ×5", "Ramp ×10"])
+    ax.set_xlabel("PV change during each round"); ax.set_ylim(88, 100.5); ax.set_ylabel("PWES (%)")
+    ax.legend(loc="upper right", fontsize=FS - 2); panel(ax, "c", -0.24)
+    fig.tight_layout(w_pad=1.4); save(fig, 9)
 
 
 if __name__ == "__main__":
-    fig1_system(); fig2_architecture(); fig3_channel(); fig4_outcomes(); fig5_traces(); fig6_robust()
+    fig1_system(); fig2_architecture(); fig3_channel(); fig4_theory(); fig5_powertalk()
+    fig4_outcomes(); fig5_traces(); fig6_robust(); fig9_sensitivity()       # results Figs 6-8 keep their v1 function names
     print("written", F)

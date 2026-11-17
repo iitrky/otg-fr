@@ -45,3 +45,20 @@ def test_linear_drift_rejected_by_high_sequency_codes():
 
 def test_dp_epsilon_decreases_with_noise():
     assert zcdp_epsilon(1, 1.0, 10) < zcdp_epsilon(1, 0.5, 10)
+
+
+def test_drift_order_codes_reject_polynomial_drift_exactly():
+    """Proposition 2: Sylvester row i is orthogonal to t^j for j < popcount(i)."""
+    from otgfr.rcd import code_drift_order
+    C = walsh_codes(13, 128, order="drift")
+    assert code_drift_order(C) >= 5
+    assert code_drift_order(walsh_codes(13, 128, order="sequency")) == 1
+    rng = np.random.default_rng(3)
+    ch = RCDChannel([("m", 1.0, False), ("w", 1.0, True)], length=128, amplitude_mw=0.006)
+    x, y, w = rng.uniform(-.9, .9, 4), rng.uniform(-.9, .9, 4), rng.uniform(.05, 1, 4)
+    P = ch.pilot_powers(ch.contributions(dict(m=x, w=y), dict(w=w), dict(w=1.0)))
+    t = np.linspace(-1, 1, 128)
+    drift = 0.5 * t + 0.3 * t ** 2 - 0.2 * t ** 3 + 0.1 * t ** 4      # 0.5 MW ramp >> 6 kW pilots
+    est, _ = ch.decode((P.sum(0) - drift) / 80.0)
+    assert abs(est["m"] - x.mean()) < 1e-9
+    assert abs(est["w"] - (w * y).sum() / w.sum()) < 1e-9

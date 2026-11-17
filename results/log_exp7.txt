@@ -1,0 +1,44 @@
+default            PWES  96.53 [96.24,96.82] crit  99.95 reint   9.6 ufls 0.13 agg 0.544 df  124
+R=1                PWES  95.06 [94.70,95.42] crit  99.32 reint  26.6 ufls 2.58 agg 0.573 df  121
+R=2                PWES  89.66 [88.60,90.71] crit  88.89 reint  14.5 ufls 0.23 agg 0.556 df  130
+R=3                PWES  96.29 [96.02,96.56] crit  99.92 reint  16.4 ufls 0.04 agg 0.549 df  124
+R=4                PWES  95.60 [95.08,96.13] crit  98.19 reint   8.4 ufls 0.06 agg 0.553 df  127
+R=7                PWES  96.51 [96.23,96.80] crit  99.97 reint  11.2 ufls 0.08 agg 0.541 df  124
+no_avg_R=3         PWES  96.70 [96.44,96.96] crit  99.89 reint  35.9 ufls 0.08 agg 0.547 df  124
+no_avg_R=4         PWES  93.59 [92.89,94.29] crit  94.35 reint  22.0 ufls 0.20 agg 0.524 df  135
+no_avg_R=5         PWES  96.28 [96.03,96.53] crit  98.83 reint  47.6 ufls 0.22 agg 0.540 df  127
+eta=0.5            PWES  96.19 [95.87,96.50] crit  99.95 reint   7.7 ufls 0.29 agg 0.547 df  123
+eta=2              PWES  96.89 [96.65,97.14] crit  99.94 reint  24.8 ufls 0.16 agg 0.540 df  126
+rho=0h             PWES  97.04 [96.75,97.33] crit  99.95 reint  30.5 ufls 0.11 agg 0.545 df  129
+rho=4h             PWES  96.71 [96.42,96.99] crit  99.95 reint   9.1 ufls 0.11 agg 0.547 df  125
+rho=16h            PWES  96.27 [96.00,96.54] crit  99.95 reint   8.3 ufls 0.19 agg 0.544 df  124
+rho=32h            PWES  96.24 [95.97,96.51] crit  99.95 reint   7.3 ufls 0.20 agg 0.543 df  125
+kappa=0            PWES  96.49 [96.21,96.77] crit  99.95 reint   8.8 ufls 0.07 agg 0.544 df  124
+kappa=1            PWES  96.54 [96.25,96.83] crit  99.95 reint   9.2 ufls 0.10 agg 0.543 df  124
+ramp5_drift        PWES  95.38 [95.12,95.64] crit  99.95 reint  11.9 ufls 0.11 agg 0.588 df  123
+ramp5_sequency     PWES  95.11 [94.83,95.40] crit  99.94 reint  13.0 ufls 0.05 agg 0.802 df  126
+ramp10_drift       PWES  93.88 [93.57,94.19] crit  99.93 reint  14.4 ufls 0.06 agg 0.759 df  122
+ramp10_sequency    PWES  91.71 [91.21,92.21] crit  98.50 reint  17.9 ufls 0.16 agg 1.352 df  126
+R=1 {'pwes_diff': -1.4671, 'p_pwes': 0.0, 'reint_diff': 17.03, 'p_reint': 0.0}
+R=2 {'pwes_diff': -6.8699, 'p_pwes': 0.0, 'reint_diff': 4.88, 'p_reint': 0.0}
+R=3 {'pwes_diff': -0.2398, 'p_pwes': 0.0067, 'reint_diff': 6.76, 'p_reint': 0.0}
+R=4 {'pwes_diff': -0.9258, 'p_pwes': 0.0721, 'reint_diff': -1.18, 'p_reint': 0.1995}
+R=7 {'pwes_diff': -0.0151, 'p_pwes': 0.9863, 'reint_diff': 1.6, 'p_reint': 0.0003}
+no_avg_R=3 {'pwes_diff': 0.173, 'p_pwes': 0.0109, 'reint_diff': 26.26, 'p_reint': 0.0}
+no_avg_R=4 {'pwes_diff': -2.9381, 'p_pwes': 0.0, 'reint_diff': 12.4, 'p_reint': 0.0}
+no_avg_R=5 {'pwes_diff': -0.2485, 'p_pwes': 0.0573, 'reint_diff': 38.05, 'p_reint': 0.0}
+eta=0.5 {'pwes_diff': -0.3394, 'p_pwes': 0.0001, 'reint_diff': -1.92, 'p_reint': 0.0023}
+eta=2 {'pwes_diff': 0.3649, 'p_pwes': 0.0, 'reint_diff': 15.16, 'p_reint': 0.0}
+rho=0h {'pwes_diff': 0.5129, 'p_pwes': 0.0, 'reint_diff': 20.91, 'p_reint': 0.0}
+rho=4h {'pwes_diff': 0.1807, 'p_pwes': 0.0021, 'reint_diff': -0.52, 'p_reint': 0.8935}
+rho=16h {'pwes_diff': -0.2583, 'p_pwes': 0.0001, 'reint_diff': -1.3, 'p_reint': 0.0377}
+rho=32h {'pwes_diff': -0.2864, 'p_pwes': 0.0, 'reint_diff': -2.26, 'p_reint': 0.0}
+kappa=0 {'pwes_diff': -0.0397, 'p_pwes': 0.5988, 'reint_diff': -0.8, 'p_reint': 0.1575}
+kappa=1 {'pwes_diff': 0.0084, 'p_pwes': 0.5249, 'reint_diff': -0.45, 'p_reint': 0.1708}
+ramp5_drift {'pwes_diff': -1.1479, 'p_pwes': 0.0, 'reint_diff': 2.35, 'p_reint': 0.0}
+ramp5_sequency {'pwes_diff': -1.4143, 'p_pwes': 0.0, 'reint_diff': 3.37, 'p_reint': 0.0}
+ramp10_drift {'pwes_diff': -2.6474, 'p_pwes': 0.0, 'reint_diff': 4.85, 'p_reint': 0.0}
+ramp10_sequency {'pwes_diff': -4.8197, 'p_pwes': 0.0, 'reint_diff': 8.34, 'p_reint': 0.0}
+ramp5_drift_vs_ramp5_sequency {'pwes_diff': 0.2664, 'p_pwes': 0.0002, 'agg_err_diff': -0.214, 'p_agg': 0.0, 'ufls_diff': 0.06, 'p_ufls': 0.3428}
+ramp10_drift_vs_ramp10_sequency {'pwes_diff': 2.1723, 'p_pwes': 0.0, 'agg_err_diff': -0.5936, 'p_agg': 0.0, 'ufls_diff': -0.1, 'p_ufls': 0.1511}
+total 377.0479242801666
